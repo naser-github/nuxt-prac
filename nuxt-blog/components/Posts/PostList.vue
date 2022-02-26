@@ -1,19 +1,16 @@
 <template>
   <section class="featured-posts">
+
     <post-preview
-      id="1"
+      v-for="post in posts"
+      :key="post.id"
+      :id="post.id"
+      :previewText="post.previewText"
+      :title="post.title"
+      :thumbnail="post.thumbnail"
       :isAdmin="isAdmin"
-      previewText="Something is wrong in this life - 1"
-      title="Post Title 1"
-      thumbnail="https://howtodrawforkids.com/wp-content/uploads/2021/05/how-to-draw-naruto-for-kids-1.jpg"
-    ></post-preview>
-    <post-preview
-      id="2"
-      :isAdmin="isAdmin"
-      previewText="Something is wrong in this life - 2"
-      title="Post Title 2"
-      thumbnail="https://howtodrawforkids.com/wp-content/uploads/2021/05/how-to-draw-naruto-for-kids-1.jpg"
-    ></post-preview>
+    >
+    </post-preview>
   </section>
 </template>
 
@@ -26,6 +23,10 @@ export default {
     isAdmin: {
       type: Boolean,
       default: false,
+    },
+    posts: {
+      type: Array,
+      required: true,
     },
   },
 };

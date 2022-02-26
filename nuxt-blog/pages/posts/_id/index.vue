@@ -1,12 +1,12 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1 class="post-title">Title of the post</h1>
+      <h1 class="post-title">{{post.title}}</h1>
       <div class="post-details">
-        <div class="post-detail">Last Updated on XXX</div>
-        <div class="post-detail">Written by</div>
+        <div class="post-detail">Last Updated on {{post.updatedDate}}</div>
+        <div class="post-detail">Written by {{post.author}}</div>
       </div>
-      <p class="post-content">Content of the post</p>
+      <p class="post-content">{{post.content}}</p>
     </section>
     <section class="post-feedback">
       <p>
@@ -18,7 +18,24 @@
 </template>
 
 <script>
-export default {};
+export default {
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        post: {
+          author: 'Tayson',
+          id: "1",
+          content: " Something is wrong in this life - 1, Something is wrong in this life - 1, Something is wrong in this life - 1, Something is wrong in this life - 1",
+          previewText: "Something is wrong in this life - 1",
+          title: "Title " + context.route.params.id,
+          thumbnail:
+            "https://howtodrawforkids.com/wp-content/uploads/2021/05/how-to-draw-naruto-for-kids-1.jpg",
+            updatedDate:new Date(),
+        },
+      });
+    },1000 * 1);
+  },
+};
 </script>
 
 <style scoped>
@@ -74,3 +91,5 @@ export default {};
   color: salmon;
 }
 </style>
+ 
+ 

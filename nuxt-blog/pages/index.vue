@@ -3,18 +3,44 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <post-list></post-list>
+    <post-list :posts="loadPosts"> </post-list>
   </div>
 </template>
 
 <script>
-
 import PostList from "../components/Posts/PostList.vue";
 
 export default {
   name: "IndexPage",
   components: {
     PostList,
+  },
+  // asyncData(context, callback) {
+  //   setTimeout(() => {
+  //     callback(null, {
+  //       posts: [
+  //         {
+  //           id: "1",
+  //           previewText: "Something is wrong in this life - 1",
+  //           title: "Title 1",
+  //           thumbnail:
+  //             "https://howtodrawforkids.com/wp-content/uploads/2021/05/how-to-draw-naruto-for-kids-1.jpg",
+  //         },
+  //         {
+  //           id: "2",
+  //           previewText: "Something is wrong in life - 2",
+  //           title: "Title 2",
+  //           thumbnail:
+  //             "https://howtodrawforkids.com/wp-content/uploads/2021/05/how-to-draw-naruto-for-kids-1.jpg",
+  //         },
+  //       ],
+  //     });
+  //   }, 1000 * 1);
+  // },
+  computed: {
+    loadPosts() {
+      return this.$store.getters.loadPosts;
+    },
   },
 };
 </script>
@@ -53,3 +79,5 @@ export default {
   }
 }
 </style>
+
+
