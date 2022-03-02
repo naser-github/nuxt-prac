@@ -7,12 +7,13 @@
     </section>
     <section class="existing-posts">
       <h1>Existing Posts</h1>
-      <post-list isAdmin></post-list>
+      <post-list :posts="loadPosts" isAdmin></post-list>
     </section>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import PostList from "@/components/Posts/PostList.vue";
 import AppButton from "@/components/UI/AppButton.vue";
 export default {
@@ -20,6 +21,21 @@ export default {
     PostList,
     AppButton,
   },
+
+  computed:{
+        loadPosts() {
+      return this.$store.getters.loadPosts;
+    },
+  }
+
+  // asyncData(context) {
+  //   return axios.get('https://nuxt-blog-ada2d-default-rtdb.firebaseio.com/posts.json')
+  //   .then(res => {
+  //     console.log(res.data);
+  //     return {loadedPost:res.data};
+  //   })
+  //   .catch(err=>console.error(err))
+  // },
 };
 </script>
 

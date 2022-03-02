@@ -5,9 +5,9 @@
       v-for="post in posts"
       :key="post.id"
       :id="post.id"
-      :previewText="post.previewText"
+      :content="post.content"
       :title="post.title"
-      :thumbnail="post.thumbnail"
+      :thumbnailLink="post.thumbnailLink"
       :isAdmin="isAdmin"
     >
     </post-preview>

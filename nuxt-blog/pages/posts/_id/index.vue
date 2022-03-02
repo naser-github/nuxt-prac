@@ -3,7 +3,7 @@
     <section class="post">
       <h1 class="post-title">{{post.title}}</h1>
       <div class="post-details">
-        <div class="post-detail">Last Updated on {{post.updatedDate}}</div>
+        <!-- <div class="post-detail">Last Updated on {{post.updatedDate}}</div> -->
         <div class="post-detail">Written by {{post.author}}</div>
       </div>
       <p class="post-content">{{post.content}}</p>
@@ -18,22 +18,31 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        post: {
-          author: 'Tayson',
-          id: "1",
-          content: " Something is wrong in this life - 1, Something is wrong in this life - 1, Something is wrong in this life - 1, Something is wrong in this life - 1",
-          previewText: "Something is wrong in this life - 1",
-          title: "Title " + context.route.params.id,
-          thumbnail:
-            "https://howtodrawforkids.com/wp-content/uploads/2021/05/how-to-draw-naruto-for-kids-1.jpg",
-            updatedDate:new Date(),
-        },
-      });
-    },1000 * 1);
+  // asyncData(context, callback) {
+  //   setTimeout(() => {
+  //     callback(null, {
+  //       post: {
+  //         author: 'Tayson',
+  //         id: "1",
+  //         content: " Something is wrong in this life - 1, Something is wrong in this life - 1, Something is wrong in this life - 1, Something is wrong in this life - 1",
+  //         previewText: "Something is wrong in this life - 1",
+  //         title: "Title " + context.route.params.id,
+  //         thumbnail:
+  //           "https://howtodrawforkids.com/wp-content/uploads/2021/05/how-to-draw-naruto-for-kids-1.jpg",
+  //           updatedDate:new Date(),
+  //       },
+  //     });
+  //   },1000 * 1);
+  // },
+  asyncData(context) {
+    return axios.get('https://nuxt-blog-ada2d-default-rtdb.firebaseio.com/posts/'+ context.params.id + '.json')
+    .then(res => {
+      console.log(res.data);
+      return {post:res.data};
+    })
+    .catch(err=>context.error(err))
   },
 };
 </script>

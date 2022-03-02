@@ -3,11 +3,11 @@
     <article class="post-preview"></article>
     <div
       class="post-thumbnail"
-      :style="{ backgroundImage: 'url(' + thumbnail + ')' }"
+      :style="{ backgroundImage: 'url(' + thumbnailLink + ')' }"
     ></div>
     <div class="post-content">
       <h1>{{ title }}</h1>
-      <p>{{ previewText }}</p>
+      <p>{{ content }}</p>
     </div>
   </nuxt-link>
 </template>
@@ -17,9 +17,9 @@ export default {
   name: "PostPreview",
   props: {
     id: { type: String, required: true },
-    previewText: { type: String, required: true },
+    content: { type: String, required: true },
     title: { type: String, required: true },
-    thumbnail: { type: String, required: true },
+    thumbnailLink: { type: String, required: true },
     isAdmin: { type: Boolean, required: true },
   },
 
