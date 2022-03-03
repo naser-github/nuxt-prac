@@ -1,7 +1,9 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <admin-post-form :post="loadedPost" @submit="onSubmitted"> </admin-post-form>
+      
+      <admin-post-form :post="loadedPost" @submitted="submitter"> </admin-post-form>
+      
     </section>
   </div>
 </template>
@@ -24,20 +26,25 @@ export default {
   // },
 
   asyncData(context) {
-    return axios.get('https://nuxt-blog-ada2d-default-rtdb.firebaseio.com/posts/'+ context.params.postId + '.json')
+    // setTimeout( () => {
+      return axios.get('https://nuxt-blog-ada2d-default-rtdb.firebaseio.com/posts/'+ context.params.postId + '.json')
     .then(res => {
       console.log(res.data);
       return {loadedPost:res.data};
     })
-    .catch(err=>console.error(err))
+    .catch(err=>console.error(err));
+    // }, 1000 * 2);
   },
 
   
 
-  method:{
-    onSubmitted(editedPost){
+  methods:{
+    submitter(editedPost){
       axios.put('https://nuxt-blog-ada2d-default-rtdb.firebaseio.com/posts/'+ this.$route.params.postId + '.json', editedPost)
-      .then(res=>console.log(res))
+      .then(res=>{
+        console.log(res);
+        this.$router.push('/admin');  
+      })
       .catch(err=>console.log(err));
     }
   }

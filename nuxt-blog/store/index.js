@@ -43,6 +43,13 @@ const createStore = () => {
         // });
       },
 
+      addPost (vuexContext, post){
+        
+      },
+      editPost (vuexContext, editedPost){
+        
+      }
+
       // setPosts(context, payload) {
       //   context.commit("setPosts", payload);
       // },
@@ -56,6 +63,13 @@ const createStore = () => {
       setPosts(state, payload) {
         state.posts = payload;
       },
+
+      addPost (state, post){
+        state.posts.push(post);
+      },
+      editPost (state, editedPost){
+        const postIndex = state.posts.findIndex(post => post.id === editedPost.id);
+      }
     },
   });
 };
