@@ -43,12 +43,12 @@ const createStore = () => {
         // });
       },
 
-      addPost (vuexContext, post){
+      // addPost (vuexContext, post){
         
-      },
-      editPost (vuexContext, editedPost){
+      // },
+      // editPost (vuexContext, editedPost){
         
-      }
+      // }
 
       // setPosts(context, payload) {
       //   context.commit("setPosts", payload);
