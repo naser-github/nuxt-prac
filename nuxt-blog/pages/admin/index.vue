@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import PostList from "@/components/Posts/PostList.vue";
 import AppButton from "@/components/UI/AppButton.vue";
 export default {
