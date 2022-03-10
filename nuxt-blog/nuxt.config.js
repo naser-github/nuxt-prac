@@ -1,4 +1,5 @@
 export default {
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "nuxt-blog",
@@ -15,6 +16,10 @@ export default {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
     ],
   },
+  // customize progress bar
+
+  // loading : {color : 'red', height:'4px', duration: 5000},
+  // loadingIndicator: { name: 'circle', color: 'red'},
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
@@ -33,4 +38,22 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-};
+  
+  env:{
+    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-ada2d-default-rtdb.firebaseio.com'
+  },
+
+  plugins: [
+      '~plugins/common-component.js'
+  ],
+
+  router:{
+    linkActiveClass: 'active',
+    extendRoutes (routes, resolve) {
+      routes.push ({
+        path: '*',
+        component: resolve (__dirname, 'pages/index.vue')
+      })
+    }
+  }
+}; 
