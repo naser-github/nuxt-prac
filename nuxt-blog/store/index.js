@@ -43,6 +43,10 @@ const createStore = () => {
         // });
       },
 
+      authenticateUser(state, payload){
+        
+      }
+
       // addPost (vuexContext, post){
         
       // },

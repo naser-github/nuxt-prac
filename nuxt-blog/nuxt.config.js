@@ -40,7 +40,8 @@ export default {
   build: {},
   
   env:{
-    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-ada2d-default-rtdb.firebaseio.com'
+    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-ada2d-default-rtdb.firebaseio.com',
+    apiKey: 'AIzaSyBGnOPkQo1spEpZZt8k4D-TWn_M8ECndRw'
   },
 
   plugins: [
@@ -48,6 +49,7 @@ export default {
   ],
 
   router:{
+    middleware: 'log',
     linkActiveClass: 'active',
     extendRoutes (routes, resolve) {
       routes.push ({
